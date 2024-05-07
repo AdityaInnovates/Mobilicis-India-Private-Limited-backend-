@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
   try {
     var decoded = jwt.verify(
       socket.handshake.auth.token,
-      "5i7UOYZmLXO0V7XqcwIofuuFsVm8Wz"
+      process.env.SECRETKEY
     );
     onlineUsers.push({
       id: decoded._id,
@@ -38,7 +38,7 @@ io.on("connection", (socket) => {
       // console.log("newsession");
       try {
         var { token } = body;
-        var decoded = jwt.verify(token, "5i7UOYZmLXO0V7XqcwIofuuFsVm8Wz");
+        var decoded = jwt.verify(token, process.env.SECRETKEY);
         var sockets = onlineUsers.filter((el) => el.id == decoded._id);
         // console.log(sockets);
         sockets.forEach((ele) => {
