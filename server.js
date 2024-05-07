@@ -4,6 +4,7 @@ const http = require("http");
 const jwt = require("jsonwebtoken");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+require("dotenv").config();
 const io = new Server(server, {
   cors: {
     origin: "*",
